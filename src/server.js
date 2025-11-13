@@ -22,9 +22,20 @@ const app = express();
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://clothica-front.vercel.app/',
+];
+
 app.use(logger);
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
 app.use(cookieParser());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
