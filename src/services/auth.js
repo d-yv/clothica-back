@@ -23,7 +23,7 @@ export const setSessionCookies = (res, session) => {
   const cookieOptions = {
     httpOnly: true,
     secure: isProduction,
-    sameSite: 'none',
+    sameSite: isProduction ? 'none' : 'lax',
     domain: isProduction ? 'clothica-front.vercel.app' : 'localhost',
     path: '/',
   };
