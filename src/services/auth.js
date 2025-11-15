@@ -24,7 +24,6 @@ export const setSessionCookies = (res, session) => {
     httpOnly: true,
     secure: isProduction,
     sameSite: isProduction ? 'none' : 'lax',
-    domain: isProduction ? 'clothica-front.vercel.app' : 'localhost',
     path: '/',
   };
 
